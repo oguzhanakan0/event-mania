@@ -1,0 +1,10 @@
+version: "2"
+services:
+  backend:
+    container_name: backend-api
+    build: .
+    command: sh -c "python manage.py makemigrations && \ python manage.py migrate && \ python manage.py shell < main/insert_data.py && \ python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app

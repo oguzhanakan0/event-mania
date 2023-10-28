@@ -1,0 +1,36 @@
+from django.urls import path
+from .views import (
+    ChangePassword,
+    CreateEvent,
+    CreateUser,
+    GetEvent,
+    GetEvents,
+    GetEventsHome,
+    GetMyEvents,
+    GetOwningEvents,
+    GetProfile,
+    JoinEvent,
+    SignIn,
+    SignOut,
+    UpdateEvent,
+    UpdateUser,
+    WithdrawFromEvent,
+)
+
+urlpatterns = [
+    path("auth/sign-in/", SignIn.as_view()),
+    path("auth/sign-out/", SignOut.as_view()),
+    path("users/create/", CreateUser.as_view()),
+    path("users/update/", UpdateUser.as_view()),
+    path("users/change-password/", ChangePassword.as_view()),
+    path("my-events/", GetMyEvents.as_view()),
+    path("owning-events/", GetOwningEvents.as_view()),
+    path("home-events/", GetEventsHome.as_view()),
+    path("events/", GetEvents.as_view()),
+    path("events/create/", CreateEvent.as_view()),
+    path("events/update/", UpdateEvent.as_view()),
+    path("events/join/", JoinEvent.as_view()),
+    path("events/withdraw/", WithdrawFromEvent.as_view()),
+    path("events/<str:pk>/", GetEvent.as_view()),
+    path("profile/", GetProfile.as_view()),
+]
